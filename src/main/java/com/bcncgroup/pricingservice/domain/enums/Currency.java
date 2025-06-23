@@ -1,9 +1,6 @@
 package com.bcncgroup.pricingservice.domain.enums;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import com.fasterxml.jackson.databind.annotation.EnumNaming;
 
 /**
  * Enum representing different currencies with their code, name, and symbol.
