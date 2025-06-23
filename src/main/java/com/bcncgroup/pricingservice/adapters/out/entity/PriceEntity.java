@@ -3,6 +3,7 @@ package com.bcncgroup.pricingservice.adapters.out.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import com.bcncgroup.pricingservice.domain.enums.CurrencyType;
@@ -34,7 +35,7 @@ public class PriceEntity {
     private int priority;
 
     @Column(name = "price", nullable = false)
-    private Float productPrice;
+    private BigDecimal productPrice;
 
     @Column(name = "curr", nullable = false)
     private CurrencyType currency;

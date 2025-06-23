@@ -5,6 +5,6 @@ CREATE TABLE prices (
     end_date TIMESTAMP NOT NULL,
     price_list_id BIGINT NOT NULL,
     priority INT NOT NULL,
-    productPrice FLOAT(10,2) NOT NULL,
+    productPrice DECIMAL(10,2) NOT NULL,
     currency VARCHAR(3) NOT NULL
 );

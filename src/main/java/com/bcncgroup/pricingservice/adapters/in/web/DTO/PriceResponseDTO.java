@@ -1,5 +1,6 @@
 package com.bcncgroup.pricingservice.adapters.in.web.DTO;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import com.bcncgroup.pricingservice.domain.enums.CurrencyType;
@@ -13,7 +14,7 @@ public record PriceResponseDTO(
         LocalDateTime startDate,
         LocalDateTime endDate,
         int priority,
-        Float price,
+        BigDecimal productPrice,
         CurrencyType currency
 ) {
     public static PriceResponseDTO fromDomain(Price price) {

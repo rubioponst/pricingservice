@@ -1,5 +1,6 @@
 package com.bcncgroup.pricingservice.domain.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import com.bcncgroup.pricingservice.domain.enums.CurrencyType;
@@ -17,7 +18,7 @@ public class Price {
     LocalDateTime startDate;
     LocalDateTime endDate;
     int priority;
-    Float productPrice;
+    BigDecimal productPrice;
     CurrencyType currency;
     
 }
