@@ -16,24 +16,33 @@ import java.util.List;
  * @author Tomàs Ismael Rubio Pons
  */
 
-public enum Currency {
+public enum CurrencyType {
     EURO("EUR", "Euro", "€"),
     DOLLAR("USD", "Dollar", "$"),
     POUND("GBP", "Pound Sterling", "£"),
     YEN("JPY", "Japanese Yen", "¥");
 
     private final String code;
+    @SuppressWarnings("unused")
     private final String name;
+    @SuppressWarnings("unused")
     private final String symbol;
 
-    Currency(String code, String name, String symbol) {
+    CurrencyType(String code, String name, String symbol) {
         this.code = code;
         this.name = name;
         this.symbol = symbol;
     }
 
-    public Currency findByCode(String code) {
-        for (Currency currency : Currency.values()) {
+    /**
+     * Finds a CurrencyType by its code.
+     *
+     * @param code the ISO code of the currency (e.g., "EUR", "USD")
+     * @return the CurrencyType corresponding to the given code
+     * @throws IllegalArgumentException if no currency with the given code is found
+     */
+    public CurrencyType findByCode(String code) {
+        for (CurrencyType currency : CurrencyType.values()) {
             if (currency.code.equalsIgnoreCase(code)) {
                 return currency;
             }
@@ -41,8 +50,13 @@ public enum Currency {
         throw new IllegalArgumentException("No currency found with code: " + code);
     }
 
-    public List<Currency> getAll() {
-        return List.of(Currency.values());
+    /**
+     * Gets a list of all available CurrencyTypes.
+     *
+     * @return a List containing all CurrencyType values
+     */
+    public List<CurrencyType> getAll() {
+        return List.of(CurrencyType.values());
     }
 
 }

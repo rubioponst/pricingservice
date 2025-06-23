@@ -1,5 +1,31 @@
 package com.bcncgroup.pricingservice.adapters.in.web.DTO;
 
-public class PriceResponseDTO {
-    
+import java.time.LocalDateTime;
+
+import com.bcncgroup.pricingservice.domain.enums.CurrencyType;
+import com.bcncgroup.pricingservice.domain.model.Price;
+
+
+public record PriceResponseDTO(
+        Long productId,
+        Long brandId,
+        Long priceListId,
+        LocalDateTime startDate,
+        LocalDateTime endDate,
+        int priority,
+        Float price,
+        CurrencyType currency
+) {
+    public static PriceResponseDTO fromDomain(Price price) {
+        return new PriceResponseDTO(
+                price.getProductId(),
+                price.getBrandId(),
+                price.getPriceListId(),
+                price.getStartDate(),
+                price.getEndDate(),
+                price.getPriority(),
+                price.getProductPrice(),
+                price.getCurrency()
+        );
+    }
 }
