@@ -8,10 +8,12 @@ import java.time.LocalDateTime;
 
 import com.bcncgroup.pricingservice.domain.enums.CurrencyType;
 
+@Entity
+@Table(name = "prices")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class PriceEntity {
 
     @Id
