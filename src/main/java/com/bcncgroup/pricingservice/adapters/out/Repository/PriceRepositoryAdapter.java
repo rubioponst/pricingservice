@@ -27,10 +27,14 @@ public class PriceRepositoryAdapter implements PriceRepository{
      */
     @Override
     public Optional<Price> findApplicablePrice(Long idProduct, Long idBrand, LocalDateTime applicationDate) {
-        return priceJpaRepository
-            .findByIdProductAndIdBrand(idProduct, idBrand)
+        
+        var priceList = priceJpaRepository.findByIdProductAndIdBrand(idProduct, idBrand);
+        
+        return priceList
             .stream()
-            .filter(entity -> !applicationDate.isBefore(entity.getStartDate()) && !applicationDate.isAfter(entity.getEndDate()))
+            .filter(entity -> entity.getStartDate().isBefore(applicationDate) || entity.getStartDate().isEqual(applicationDate))
+            .filter(entity -> entity.getEndDate().isAfter(applicationDate) || entity.getEndDate().isEqual(applicationDate))
+            .sorted((e1, e2) -> Integer.compare(e2.getPriority(), e1.getPriority())) // Prioridad descendente
             .findFirst()
             .map(this::toDomain);
     }

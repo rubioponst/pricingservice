@@ -17,7 +17,7 @@ public interface  PriceJpaRepository extends JpaRepository<PriceEntity, Long> {
      * @param applicationDate the date and time when the price is to be applied
      * @return a list of PriceEntity objects that match the criteria
      */
-    Optional<PriceEntity> findByIdProductAndIdBrand(
+    List<PriceEntity> findByIdProductAndIdBrand(
         Long idProduct,
         Long idBrand
     );
