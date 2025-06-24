@@ -32,10 +32,8 @@ public class PriceRepositoryAdapter implements PriceRepository{
         
         return priceList
             .stream()
-            .filter(entity -> entity.getStartDate().isBefore(applicationDate) || entity.getStartDate().isEqual(applicationDate))
-            .filter(entity -> entity.getEndDate().isAfter(applicationDate) || entity.getEndDate().isEqual(applicationDate))
-            .sorted((e1, e2) -> Integer.compare(e2.getPriority(), e1.getPriority())) // Prioridad descendente
-            .findFirst()
+            .filter(price -> price.getStartDate().isBefore(applicationDate) && price.getEndDate().isAfter(applicationDate))
+            .max((p1, p2) -> Integer.compare(p1.getPriority(), p2.getPriority()))
             .map(this::toDomain);
     }
 
