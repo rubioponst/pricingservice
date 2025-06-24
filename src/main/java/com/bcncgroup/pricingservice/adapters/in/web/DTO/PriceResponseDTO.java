@@ -19,9 +19,9 @@ public record PriceResponseDTO(
 ) {
     public static PriceResponseDTO fromDomain(Price price) {
         return new PriceResponseDTO(
-                price.getProductId(),
-                price.getBrandId(),
-                price.getPriceListId(),
+                price.getIdProduct(),
+                price.getIdBrand(),
+                price.getIdPriceList(),
                 price.getStartDate(),
                 price.getEndDate(),
                 price.getPriority(),

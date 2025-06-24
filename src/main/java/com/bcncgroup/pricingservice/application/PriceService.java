@@ -6,6 +6,7 @@ import com.bcncgroup.pricingservice.domain.model.Price;
 import com.bcncgroup.pricingservice.domain.repository.PriceRepository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -33,14 +34,25 @@ public class PriceService {
      * that returns the price with the highest priority for the specified parameters.
      * </p>
      *
-     * @param productId the ID of the product for which to find the price
-     * @param brandId the ID of the brand for which to find the price
-     * @param date the date and time for which the price should be applicable
+     * @param idProduct the ID of the product for which to find the price
+     * @param idBrand the ID of the brand for which to find the price
+     * @param applicationDate the date and time for which the price should be applicable
      * @return an {@link Optional} containing the applicable {@link Price} if found, or empty if no price is applicable
      */
-    public Optional<Price> findApplicablePrice(Long productId, Long brandId, LocalDateTime date) {
+    public Optional<Price> findApplicablePrice(Long idProduct, Long idBrand, LocalDateTime applicationDate) {
         // Call the repository method to find the applicable price
         // This method is expected to return the price with the highest priority for the given parameters
-        return priceRepository.findApplicablePrice(productId, brandId, date);
+        return priceRepository.findApplicablePrice(idProduct, idBrand, applicationDate);
+    }
+
+    /**
+     * Retrieves all prices for a specific product.
+     *
+     * @param idProduct the ID of the product for which to retrieve prices
+     * @return a list of {@link Price} objects associated with the specified product ID
+     */
+    public List<Price> findByIdProduct(Long idProduct) {
+        // Retrieves all prices from the repository
+        return priceRepository.findByIdProduct(idProduct);
     }
 }

@@ -16,29 +16,40 @@ import com.bcncgroup.pricingservice.domain.enums.CurrencyType;
 @AllArgsConstructor
 public class PriceEntity {
 
+    /**
+     * Represents a price in the pricing service entity model.
+     *
+     * This class encapsulates the details of a price, including its ID, product ID,
+     * brand ID, start and end dates, price list ID, priority, product price, and currency type.
+     */
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id", nullable = false)
-    private Long productId;
+    @Column(name = "ID", nullable = false)
+    private Long id;
 
-    @Column(name = "brand_id", nullable = false)
-    private Long brandId;
+    @Column(name = "ID_PRODUCT", nullable = false)
+    private Long idProduct;
 
-    @Column(name = "start_date", nullable = false)
+    @Column(name = "ID_BRAND", nullable = false)
+    private Long idBrand;
+
+    @Column(name = "START_DATE", nullable = false)
     private LocalDateTime startDate;
 
-    @Column(name = "end_date", nullable = false)
+    @Column(name = "END_DATE", nullable = false)
     private LocalDateTime endDate;
 
-    @Column(name = "price_list", nullable = false)
-    private Long priceListId;
+    @Column(name = "ID_PRICE_LIST", nullable = false)
+    private Long idPriceList;
 
-    @Column(name = "priority", nullable = false)
+    @Column(name = "PRIORITY", nullable = false)
     private int priority;
 
-    @Column(name = "price", nullable = false)
+    @Column(name = "PRICE", nullable = false)
     private BigDecimal productPrice;
 
-    @Column(name = "curr", nullable = false)
+    @Column(name = "ID_CURRENCY_TYPE", nullable = false)
     private CurrencyType currency;
+    
 }

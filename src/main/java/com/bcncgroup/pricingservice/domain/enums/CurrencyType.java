@@ -17,21 +17,39 @@ import java.util.List;
  */
 
 public enum CurrencyType {
-    EURO("EUR", "Euro", "€"),
-    DOLLAR("USD", "Dollar", "$"),
-    POUND("GBP", "Pound Sterling", "£"),
-    YEN("JPY", "Japanese Yen", "¥");
+    EURO(1,"EUR", "Euro", "€"),
+    DOLLAR(2, "USD", "Dollar", "$"),
+    POUND(3, "GBP", "Pound Sterling", "£"),
+    YEN(4, "JPY", "Japanese Yen", "¥");
 
+    private final int id;
     private final String code;
     @SuppressWarnings("unused")
     private final String name;
     @SuppressWarnings("unused")
     private final String symbol;
 
-    CurrencyType(String code, String name, String symbol) {
+    CurrencyType(int id, String code, String name, String symbol) {
+        this.id = id;
         this.code = code;
         this.name = name;
         this.symbol = symbol;
+    }
+
+    /**
+     * Returns the {@link CurrencyType} corresponding to the specified id.
+     *
+     * @param id the unique identifier of the currency type
+     * @return the {@code CurrencyType} with the given id
+     * @throws IllegalArgumentException if no currency type with the specified id exists
+     */
+    public CurrencyType findById(int id) {
+        for (CurrencyType currency : CurrencyType.values()) {
+            if (currency.id == id) {
+                return currency;
+            }
+        }
+        throw new IllegalArgumentException("No currency found with id: " + id);
     }
 
     /**
